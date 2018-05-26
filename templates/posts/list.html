@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<article class="post">
+  <div class="postheader"></div>
+  <ul>
+    {% for item in list %}
+    <li class="citation">
+      <a title="Author of This Post" class="tooltip">{{ item.author }}</a>. " <a href="{% url 'posts_view' item.slug %}"><span class="title" title="Click to read this post">{{ item.title }}</span></a> " gtsz.rcp, <a title="Date of Published" class="tooltip">{{ item.createtime|date:"d b. Y" }}</a>. Web.
+    </li>
+    {% endfor %}
+  </ul>
+</article>
+{% endblock %}

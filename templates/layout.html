@@ -1,0 +1,78 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>gtsz.rcp – official website of GTSZ.RCP</title>
+  <meta charset="utf-8" />
+  <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+  <meta name="description" content="official website of GTSZ.RCP">
+  <meta property="og:description" content="official website of GTSZ.RCP" />
+  <meta name="author" content="gtsz.rcp" />
+  <link rel="stylesheet" type="text/css" href="{% static '/css/style.css'%}" />
+  <script src="{% static '/js/showdown.min.js'%}" ></script>
+</head>
+<body>
+  <div class="wrapper-masthead">
+    <div class="header">
+      <header>
+        <div class="site-name">
+          <a href="/">gtsz.rcp</a>
+        </div>
+      </header>
+      <nav>
+        <div class="dropdown">
+          <button class="dropbtn">official website of GTSZ.RCP</button>
+          <div class="dropdown-content">
+            <a href="{% url 'pages_view' 'about' %}">About</a>
+            <a href="{% url 'posts_list' %}">Posts</a>
+            <a href="{% url 'bib_list' %}">Bibliography</a>
+            <a href="{% url 'dist_list' %}">Distributor</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div id="main" role="main" class="container">
+    {% block content %}{% endblock %}
+  </div>
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        <div id="mc_embed_signup">
+          <form
+            action="//gtsz-rcp.us12.list-manage.com/subscribe/post?u=70f84733c48c35a0f2f4a7a62&amp;id=667ad9bd53"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            class="validate"
+            target="_blank"
+            novalidate>
+            <div id="mc_embed_signup_scroll">
+              <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="b_70f84733c48c35a0f2f4a7a62_667ad9bd53" tabindex="-1" value="">
+              </div>
+              <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+            </div>
+          </form>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+  (function(markdown){
+    var md_container = document.getElementsByClassName(markdown)
+    var converter = new showdown.Converter({
+      ghCodeBlocks: false,
+      omitExtraWLInCodeBlocks: false
+    });
+    for (let i = 0; i < md_container.length; i++) {
+      let text = md_container[i].innerHTML.replace(/^\s+(\W)/, '$1')
+      md_container[i].innerHTML = converter.makeHtml(text)
+    }
+  })('markdown');
+	</script>
+</body>
+</html>

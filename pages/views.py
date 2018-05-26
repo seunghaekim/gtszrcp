@@ -1,0 +1,61 @@
+from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from django.contrib.auth import get_user_model
+from django.forms.models import model_to_dict
+from django.http import HttpResponse
+from django.http import Http404
+from .models import *
+
+# Create your views here.
+def post(request, slug=None, category_id=1):
+    if slug != None:
+        return _page_view(request, slug, category_id)
+    return _page_list(request, category_id)
+
+
+def page(request, slug=None, category_id=2):
+    if slug != None:
+        return _page_view(request, slug, category_id)
+    return _page_list(request, category_id)
+
+
+def index(request, slug=None, category_id=None):
+    return _page_list(request, category_id)
+
+
+def _page_list(request, category_id):
+    try:
+        lists = Page.objects.select_related().prefetch_related()
+    except Page.DoesNotExist:
+        raise Http404("Pages not exists")
+
+    if category_id != None:
+        lists = lists.filter(category_id=category_id)
+    lists = lists.order_by('createtime').values()
+    User = get_user_model()
+
+    for i in range(0, len(lists)):
+        usr = User.objects.get(pk=lists[i]['author_id'])
+        lists[i]['author'] = ' '.join([usr.first_name.capitalize(), usr.last_name])
+
+    return render(request, 'posts/list.html', {'list': lists})
+
+
+def _page_view(request, slug, category_id):
+    template =  'posts/view.html'
+    if category_id == 2:
+        template = 'pages/view.html'
+
+    try:
+        postObj = Page.objects.select_related().prefetch_related().get(slug=slug)
+    except Page.DoesNotExist:
+        raise Http404("The Page is not exists")
+
+    post = {}
+    for key in model_to_dict(postObj):
+        post[key] = getattr(postObj, key)
+        if key == 'author':
+            post[key] = ' '.join([post[key].first_name.capitalize(), post[key].last_name])
+    post['createtime'] = postObj.createtime
+
+    return render(request, 'posts/view.html', {'post': post})
