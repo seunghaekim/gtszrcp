@@ -11,6 +11,7 @@ class Book(models.Model):
     )
 
     title = models.CharField(max_length=500)
+    subtitle = models.CharField(max_length=500, blank=True)
     writer = models.ForeignKey('Artist', on_delete=models.DO_NOTHING, related_name='artist_as_writer')
     designer = models.ForeignKey('Artist', on_delete=models.DO_NOTHING, related_name='artist_as_designer')
     publisher = models.ForeignKey('Publisher', on_delete=models.DO_NOTHING)
@@ -22,7 +23,7 @@ class Book(models.Model):
     pub_date = models.DateField()
     colorspace = models.CharField(choices=COLORSPACE, max_length=100)
     price = models.FloatField(default=1, null=True)
-    slug = models.SlugField(max_length=20, unique=True, default=time.time())
+    slug = models.SlugField(max_length=20, unique=True)
 
     summary = models.TextField()
     figs = models.TextField(null=True, blank=True)

@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.conf.urls import include, url
+from django.conf.urls.static import static
 from django.urls import path
-
 from django.contrib import admin
+
 admin.autodiscover()
 
 import bibliography.views
@@ -20,4 +22,4 @@ urlpatterns = [
     url(r'^posts/$', pages.views.post, name='posts_list'),
     url(r'^posts/(?P<slug>[\w\d\-\_]+)$', pages.views.post, name='posts_view'),
     url(r'^pages/(?P<slug>[\w\d\-\_]+)$', pages.views.page, name='pages_view'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
