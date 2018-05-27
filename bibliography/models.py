@@ -19,14 +19,17 @@ class Book(models.Model):
     medium = models.CharField(max_length=100)
     page_amt = models.IntegerField(default=1, null=True)
     binding_type = models.CharField(max_length=100, null=True, blank=True)
+    pub_date = models.DateField()
     colorspace = models.CharField(choices=COLORSPACE, max_length=100)
     price = models.FloatField(default=1, null=True)
-    summary = models.TextField()
-    toc = models.TextField(null=True)
-    publishedtime = models.DateTimeField()
-    figs = models.TextField(null=True, blank=True)
-    distributor = models.ManyToManyField('Bookshop', related_name='publisher_as_distributor', blank=True)
     slug = models.SlugField(max_length=20, unique=True, default=time.time())
+
+    summary = models.TextField()
+    figs = models.TextField(null=True, blank=True)
+    toc = models.TextField(null=True)
+
+    distributor = models.ManyToManyField('Bookshop', related_name='publisher_as_distributor', blank=True)
+
     updatetime = models.DateTimeField(auto_now=True)
     createtime = models.DateTimeField(auto_now_add=True)
 

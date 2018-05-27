@@ -15,9 +15,9 @@ urlpatterns = [
     url(r'^$', pages.views.index, name='index'),
     path('admin/', admin.site.urls),
     url(r'^bibliography/$', bibliography.views.bibliography, name='bib_list'),
-    url(r'^bibliography/(?P<slug>[\w\d]+)/$', bibliography.views.bibliography, name='bib_view'),
+    url(r'^bibliography/(?P<slug>[\w\d\-\_]+)/$', bibliography.views.bibliography, name='bib_view'),
     url(r'^distributor/$', bibliography.views.distributor, name='dist_list'),
     url(r'^posts/$', pages.views.post, name='posts_list'),
-    url(r'^posts/(?P<slug>[\w\d]+)$', pages.views.post, name='posts_view'),
-    url(r'^pages/(?P<slug>[\w\d]+)$', pages.views.page, name='pages_view'),
+    url(r'^posts/(?P<slug>[\w\d\-\_]+)$', pages.views.post, name='posts_view'),
+    url(r'^pages/(?P<slug>[\w\d\-\_]+)$', pages.views.page, name='pages_view'),
 ]

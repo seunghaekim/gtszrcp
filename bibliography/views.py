@@ -15,7 +15,7 @@ def bibliography(request, slug=None):
 
 def _bib_list(request):
     try:
-        booklist = Book.objects.select_related().prefetch_related().all()
+        booklist = Book.objects.select_related().prefetch_related().order_by('-pub_date').all()
     except Book.DeosNotExist:
         raise Http404("Book List Does Not Exist")
 
@@ -25,7 +25,7 @@ def _bib_list(request):
             'writer': b.writer.name,
             'title': b.title,
             'publisher': ': '.join([b.publisher.name, b.publisher_place]),
-            'datetime': b.publishedtime.strftime("%Y"),
+            'datetime': b.pub_date.strftime("%Y"),
             'slug': b.slug,
         }
         material = []

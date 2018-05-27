@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from bibliography.models import *
+
 import time
 
 # Create your models here.
@@ -9,7 +11,10 @@ class Page(models.Model):
     slug = models.SlugField(max_length=20, unique=True, default=time.time())
     category = models.ForeignKey('Category', on_delete=models.DO_NOTHING)
     content = models.TextField(blank=True)
-    updatetime = models.DateTimeField(auto_now=True)
+
+    is_list = models.BooleanField(default=True)
+
+    pub_date = models.DateField()
     createtime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
