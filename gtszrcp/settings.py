@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'photo',
     'storages',
     'django_extensions',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

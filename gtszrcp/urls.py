@@ -1,25 +1,23 @@
 from django.conf import settings
-from django.conf.urls import include, url
+from django.conf.urls import include
+from django.conf.urls import url
 from django.conf.urls.static import static
+from rest_framework import routers
 from django.urls import path
 from django.contrib import admin
-
-admin.autodiscover()
 
 import bibliography.views
 import pages.views
 
-# Examples:
-# url(r'^$', 'gtszrcp.views.home', name='home'),
-# url(r'^blog/', include('blog.urls')),
+admin.autodiscover()
+
+router = routers.DefaultRouter()
+router.register(r'book', bibliography.views.BookViewSet)
+router.register(r'dist', bibliography.views.DistViewSet)
+router.register(r'page', pages.views.PageViewSet)
+router.register(r'post', pages.views.PostViewSet)
 
 urlpatterns = [
-    url(r'^$', pages.views.index, name='index'),
+    url(r'^v1/', include(router.urls)),
     path('admin/', admin.site.urls),
-    url(r'^bibliography/$', bibliography.views.bibliography, name='bib_list'),
-    url(r'^bibliography/(?P<slug>[\w\d\-\_]+)/$', bibliography.views.bibliography, name='bib_view'),
-    url(r'^distributor/$', bibliography.views.distributor, name='dist_list'),
-    url(r'^posts/$', pages.views.post, name='posts_list'),
-    url(r'^posts/(?P<slug>[\w\d\-\_]+)$', pages.views.post, name='posts_view'),
-    url(r'^pages/(?P<slug>[\w\d\-\_]+)$', pages.views.page, name='pages_view'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
