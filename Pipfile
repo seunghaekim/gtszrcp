@@ -16,6 +16,7 @@ pillow = "*"
 boto = "*"
 "boto3" = "*"
 django-storages = "*"
+djangorestframework = "*"
 
 
 [requires]
