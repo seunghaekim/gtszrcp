@@ -30,7 +30,7 @@ class Book(models.Model):
     summary = models.TextField()
     figs = models.TextField(null=True, blank=True)
     toc = models.TextField(null=True)
-    images = models.ForeignKey(Gallery, blank=True, on_delete=models.DO_NOTHING, default=None, null=True)
+    images = models.OneToOneField(Gallery, blank=True, on_delete=models.DO_NOTHING, default=None, null=True)
 
     distributor = models.ManyToManyField('Bookshop', related_name='publisher_as_distributor', blank=True)
 
@@ -54,20 +54,6 @@ class Book(models.Model):
 
     def publisher_str(self):
         return self.__many_to_string('publisher')
-    
-    def images_related(self):
-        images = False
-        if(hasattr(self.images, 'images_serializer')):
-            images = self.images.images_serializer()
-        
-        return images
-    
-    def distributor_related(self):
-        dist = []
-        for d in self.distributor.all():
-            dist.append({'name': d.name, 'website': d.website})
-        
-        return dist
 
 
 class Artist(models.Model):

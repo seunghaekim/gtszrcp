@@ -4,6 +4,13 @@
       <h1>{{content.title}}</h1>
       <h2 v-if="content.subtitle">{{content.subtitle}}</h2>
     </header>
+    <section v-if="content.images_related" class="images">
+      <ul>
+        <li v-for="(item, index) in content.images_related" :key="index">
+          <img v-bind:src="item.url" v-bind:alt="item.name" />
+        </li>
+      </ul>
+    </section>
     <section class="meta">
       <dl v-for="(item, index) in meta" :key="index">
           <dt>{{item.label}}</dt>
@@ -22,9 +29,11 @@
         <h2 id="list-of-figs">List of FIGs</h2>
         <div class="content" v-html="content.figs"></div>
     </section>
-    <section v-if="content.distributor" class="distributor">
+    <section v-if="content.distributor_related" class="distributor_related">
         <h2>Distributor</h2>
-        {{content.distributor}}
+        <ul>
+          <li v-for="(item, index) in content.distributor_related" :key="index"><a v-bind:href="item.website">{{item.name}}</a></li>
+        </ul>
     </section>
   </article>
 </template>
@@ -36,9 +45,9 @@ export default {
     return {
       content: [],
       meta: {
-        writer: 'Writer',
-        designer: 'Designer',
-        publisher: 'Publisher',
+        writer_str: 'Writer',
+        designer_str: 'Designer',
+        publisher_str: 'Publisher',
         language: 'Written in',
         publisher_place: 'Place of Publication',
         medium: 'Medium of the Book',
@@ -61,14 +70,17 @@ export default {
     },
     set_content: function (data, converter) {
       let content = {}
-      let contentKeys = ['summary', 'toc', 'figs', 'distributor']
+      let contentKeys = ['summary', 'toc', 'figs', 'distributor_related', 'images_related']
       contentKeys.map(function (curr) {
-        if (typeof data[curr] !== 'string' && data[curr].length < 1) {
+        if(data[curr] === null) return
+        if ((typeof data[curr] !== 'string' && data[curr].length < 1)) {
           return
         }
         if (typeof data[curr] === 'string') {
           content[curr] = converter.makeHtml(data[curr])
+          return
         }
+        content[curr] = data[curr]
       })
       return content
     },

@@ -18,24 +18,38 @@ ul {
 #app {
   padding: 1.5em;
   padding-top: 10em;
+
   & > article {
     position: relative;
     z-index: 1;
     max-width: 500px;
-
+    
     h1 {
       font-size: 3em;
       line-height: 1.2;
       word-break: keep-all;
-      margin: 1em 0 1.5em 0;
+      margin: 15% 0 10% 0;
     }
+
     h2 {
       font-size: 2em;
-      margin: 1.5em 0 0.8em 0;
     }
+
+    h2, h3 {
+      margin: 10% 0 5% 0;
+    }
+
     p {
       word-break: keep-all;
       margin: 0.5em 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .date {
+      text-align: right;
     }
   }
 }
@@ -45,8 +59,9 @@ ul {
   top: 0;
   left:0;
   right:0;
-  z-index: 10;
+  height: 0;
   padding: 1.5em;
+  z-index: 100;
 
   h1, nav > ul > li, nav > .show_menu {font-size: 1.2em}
 

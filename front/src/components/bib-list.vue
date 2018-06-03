@@ -6,7 +6,7 @@
     <div class="entry">
       <ul>
         <li v-for="item in lists" :key="item.id" class="citation">
-          {{item.writer}}.<router-link :to="{name: 'BibView', params: {slug: item.slug}}">{{item.title}}</router-link>. {{item.publisher}}: {{item.publisher_place}}, {{date_format(item.pub_date)}}
+          {{item.writer_str}}.<router-link :to="{name: 'BibView', params: {slug: item.slug}}">{{item.title}}</router-link>. {{item.publisher_str}}: {{item.publisher_place}}, {{date_format(item.pub_date)}}
         </li>
       </ul>
     </div>
