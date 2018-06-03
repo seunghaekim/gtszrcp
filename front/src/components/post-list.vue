@@ -1,14 +1,12 @@
 <template>
-  <div class="posts">
-    <article class="post">
-      <div class="postheader"></div>
-      <ul>
-        <li v-for="item in lists" :key="item.id" class="citation">
-          {{item.author}}. "<router-link :to="{ name: 'PostView', params: {slug: item.slug} }">{{item.title}}</router-link>" {{item.pub_date}}. Web.
-        </li>
-      </ul>
-    </article>
-  </div>
+  <article class="post">
+    <div class="postheader"></div>
+    <ul>
+      <li v-for="item in lists" :key="item.id" class="citation">
+        {{item.author}}. "<router-link :to="{ name: 'PostView', params: {slug: item.slug} }">{{item.title}}</router-link>" {{item.pub_date}}. Web.
+      </li>
+    </ul>
+  </article>
 </template>
 
 <script>

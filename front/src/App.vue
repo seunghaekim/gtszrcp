@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <header id="masthead">
-      <h1><router-link :to="{ name: 'Home', params: {} }">gtsz.rcp</router-link></h1>
+    <header id="masthead" class="clearfix">
+      <h1><router-link :to="{ name: 'Home', params: {} }">금치산자레시피</router-link></h1>
       <nav>
-        <ul>
-          <li><router-link :to="{name: 'PageView', params: {slug: 'about'}}">About</router-link></li>
-          <li><router-link :to="{name: 'PostList'}">Posts</router-link></li>
-          <li><router-link :to="{name: 'BibList'}">Bibliography</router-link></li>
-          <li><router-link :to="{name: 'DistList'}">Distributor</router-link></li>
+        <ul class="on-lg">
+          <li v-for="(value, key) in menu" class="menu-item" :key="key"><router-link :to="value.route">{{value.label}}</router-link></li>
+        </ul>
+        <ul class="on-sm">
+          <li class="show-menu"><a v-on:click="show_menu" href="#">MENU</a></li>
+          <li v-for="(value, key) in menu" v-show="smMenuVisible" :key="key" class="menu-item"><router-link :to="value.route">{{value.label}}</router-link></li>
         </ul>
       </nav>
     </header>
@@ -18,9 +19,40 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      smMenuVisible: false,
+      menu: {
+        about: {
+          route: {name: 'PageView', params: {slug: 'about'}},
+          label: 'About'
+        },
+        posts: {
+          route: {name: 'PostList'},
+          label: 'Posts'
+        },
+        bib: {
+          route: {name: 'BibList'},
+          label: 'Bibliography'
+        },
+        dist: {
+          route: {name: 'DistList'},
+          label: 'Distributor'
+        }
+      }
+    }
+  },
+  methods: {
+    show_menu: function () {
+      console.log(this.smMenuVisible)
+      this.smMenuVisible = !this.smMenuVisible
+    }
+  }
 }
 </script>
 
 <style lang="scss">
+@import 'assets/scss/_reboot.scss';
+@import 'assets/scss/style.scss';
 </style>

@@ -6,11 +6,13 @@ from .serializers import *
 class PageViewSet(viewsets.ModelViewSet):
     queryset = Page.objects.filter(category_id=2).order_by('-pub_date').all()
     serializer_class = PageSerializer
+    lookup_field = 'slug'
 
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Page.objects.filter(category_id=1).order_by('-pub_date').all()
     serializer_class = PageSerializer
+    lookup_field = 'slug'
 
 # def index(request, slug=None, category_id=None):
 #     return _page_list(request, category_id)

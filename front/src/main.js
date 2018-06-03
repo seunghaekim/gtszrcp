@@ -8,7 +8,9 @@ Vue.config.productionTip = false
 
 Vue.prototype.$http = axios
 Vue.prototype.$api_root = (process.env.API_ROOT !== undefined ? process.env.API_ROOT : '')
-Vue.prototype.$showdown = new showdown.Converter()
+Vue.prototype.$showdown = new showdown.Converter({
+  headerLevelStart: 2
+})
 
 var vm = new Vue({
   el: '#app',
