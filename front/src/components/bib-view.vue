@@ -72,7 +72,7 @@ export default {
       let content = {}
       let contentKeys = ['summary', 'toc', 'figs', 'distributor_related', 'images_related']
       contentKeys.map(function (curr) {
-        if(data[curr] === null) return
+        if (data[curr] === null) return
         if ((typeof data[curr] !== 'string' && data[curr].length < 1)) {
           return
         }

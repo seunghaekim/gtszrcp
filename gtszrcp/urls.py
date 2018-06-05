@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from rest_framework import routers
 from django.urls import path
 from django.contrib import admin
-
+from .views import index
 import bibliography.views
 import pages.views
 
@@ -18,6 +18,7 @@ router.register(r'page', pages.views.PageViewSet)
 router.register(r'post', pages.views.PostViewSet)
 
 urlpatterns = [
+    url(r'^$', index),
     url(r'^v1/', include(router.urls)),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
