@@ -17,10 +17,3 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.title
-
-    def images_serializer(self):
-        images = []
-        for i in self.images.all():
-            images.append({ 'url': i.image.url, 'name': i.name })
-        
-        return images

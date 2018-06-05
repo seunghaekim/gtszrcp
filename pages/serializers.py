@@ -1,13 +1,22 @@
 from rest_framework import serializers
-from .models import Page
+from photo.serializers import *
+from .models import *
 
 class AuthorNameField(serializers.RelatedField):
     def to_representation(self, value):
         return ' '.join(list(filter(lambda x: x != None, [value.last_name, value.first_name])))
 
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+
 class PageSerializer(serializers.ModelSerializer):
     author = AuthorNameField(read_only=True)
-    category = serializers.StringRelatedField()
+    category = CategorySerializer()
+    images = GallerySerializer()
     lookup_field = 'slug'
     extra_kwargs = {
         'url': {'lookup_field': 'slug'}
@@ -15,4 +24,4 @@ class PageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Page
-        fields = ('id', 'author', 'title', 'slug', 'category', 'content', 'is_list', 'pub_date', 'createtime')
+        fields = '__all__'

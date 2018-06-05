@@ -55,13 +55,6 @@ class Book(models.Model):
     def publisher_str(self):
         return self.__many_to_string('publisher')
     
-    def images_related(self):
-        images = False
-        if(hasattr(self.images, 'images_serializer')):
-            images = self.images.images_serializer()
-        
-        return images
-    
     def distributor_related(self):
         dist = []
         for d in self.distributor.all():

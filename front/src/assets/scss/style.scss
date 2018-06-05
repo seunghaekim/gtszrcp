@@ -23,6 +23,12 @@ ul {
     position: relative;
     z-index: 1;
     max-width: 500px;
+
+    & > section.content {
+      position: relative;
+      z-index: 10;
+      text-shadow: 0 0 5px rgb(255, 255, 255);
+    }
     
     h1 {
       font-size: 3em;
@@ -50,6 +56,25 @@ ul {
 
     .date {
       text-align: right;
+    }
+
+    .VueCarousel {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 70vw;
+      margin: 0 auto;
+      z-index: 0;
+
+      .VueCarousel-pagination {
+        display:none;
+
+        .VueCarousel-dot {
+          margin: 0.5em 0 !important;
+        }
+      }
     }
   }
 }
@@ -92,5 +117,27 @@ ul {
                 &.on-sm {display: block;}
             }
         }
+    }
+
+    #app {
+      & > article {
+        width: 100%;
+        max-width: inherit;
+        & > section.content {
+          position: relative;
+        }
+        .VueCarousel {
+          position: relative;
+          top: inherit;
+          left: inherit;
+          right: inherit;
+          width: 100%;
+          transform: none;
+
+          .VueCarousel-pagination {
+            display: block;
+          }
+        }
+      }
     }
 }

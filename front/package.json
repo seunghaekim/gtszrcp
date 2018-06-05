@@ -16,11 +16,15 @@
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^5.0.1",
+    "jquery": "^3.3.1",
     "moment": "^2.22.2",
     "node-sass": "^4.9.0",
+    "numeral": "^2.0.6",
     "sass-loader": "^7.0.1",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-carousel": "^0.8.1",
+    "vue-router": "^3.0.1",
+    "vue-slick": "^1.1.12"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

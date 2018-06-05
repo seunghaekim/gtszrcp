@@ -6,7 +6,7 @@
     <div class="entry">
       <ul>
         <li v-for="item in lists" :key="item.id" class="citation">
-          {{item.writer_str}}.<router-link :to="{name: 'BibView', params: {slug: item.slug}}">{{item.title}}</router-link>. {{item.publisher_str}}: {{item.publisher_place}}, {{date_format(item.pub_date)}}
+          {{name_implode(item.writer)}}. <router-link :to="{name: 'BibView', params: {slug: item.slug}}">{{item.title}}</router-link>. {{name_implode(item.publisher)}}: {{item.publisher_place}}, {{date_format(item.pub_date)}}
         </li>
       </ul>
     </div>
@@ -35,6 +35,11 @@ export default {
     date_format: function (dateStr) {
       let m = moment(dateStr)
       return m.format('Y')
+    },
+    name_implode: function (artistArr) {
+      return artistArr.map((curr) => {
+        return curr.name
+      }).join(', ')
     }
   },
   created () {

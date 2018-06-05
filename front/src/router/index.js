@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import PageView from '@/components/page-view'
 import PostList from '@/components/post-list'
 import PostView from '@/components/post-view'
 import BibList from '@/components/bib-list'
@@ -19,7 +18,7 @@ export default new Router({
     {
       path: '/page/:slug',
       name: 'PageView',
-      component: PageView
+      component: PostView
     },
     {
       path: '/post',

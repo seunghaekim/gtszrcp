@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from photo.models import Gallery
 
 import time
 
@@ -10,7 +11,9 @@ class Page(models.Model):
     slug = models.SlugField(max_length=20, unique=True, default=time.time())
     category = models.ForeignKey('Category', on_delete=models.DO_NOTHING)
     content = models.TextField(blank=True)
+    images = models.ForeignKey(Gallery, blank=True, on_delete=models.DO_NOTHING, default=None, null=True)
 
+    is_feature = models.BooleanField(default=False)
     is_list = models.BooleanField(default=True)
 
     pub_date = models.DateField()

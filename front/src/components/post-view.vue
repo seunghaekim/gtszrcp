@@ -1,18 +1,27 @@
 <template lang="html">
   <article class="post">
-    <div class="postheader">
-      <h1>{{content.title}}</h1>
-    </div>
-    <div class="entry" v-html="content.content"></div>
-    <div class="date">{{content.pub_date}}</div>
+    <carousel :per-page="1" :loop="true" :autoplay="true" v-if="content.images" class="images">
+      <slide v-for="(item, index) in content.images.images" :key="index">
+        <img v-bind:src="item.image" v-bind:alt="item.name" />
+      </slide>
+    </carousel>
+    <section class="content">
+      <div class="postheader">
+        <h1>{{content.title}}</h1>
+      </div>
+      <div class="entry" v-html="content.content"></div>
+      <div class="date">{{content.pub_date}}</div>
+    </section>
   </article>
 </template>
 
 <script>
-const moment = require('moment')
+import { Carousel, Slide } from 'vue-carousel'
+import moment from 'moment'
 
 export default {
   name: 'PostView',
+  components: { Carousel, Slide },
   data () {
     return {
       content: []
@@ -20,7 +29,7 @@ export default {
   },
   methods: {
     get_content: function () {
-      this.$http.get(`${this.$api_root}/post/${this.$route.params.slug}`)
+      this.$http.get(this.api_url())
         .then((result) => {
           if (result.status === 200) {
             result.data.content = this.$showdown.makeHtml(result.data.content)
@@ -29,7 +38,14 @@ export default {
             this.content = result.data
           }
         })
+    },
+    api_url: function () {
+      let cat = this.$route.name === 'PageView' ? 'page' : 'post'
+      return [this.$api_root, cat, this.$route.params.slug].join('/')
     }
+  },
+  watch: {
+    '$route': 'get_content'
   },
   created () {
     this.get_content()
