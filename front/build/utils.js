@@ -92,7 +92,7 @@ exports.createNotifierCallback = () => {
     const filename = error.file && error.file.split('!').pop()
 
     notifier.notify({
-      title: packageConfig.name,
+      title: 'GTSZ.RCP',
       message: severity + ': ' + error.name,
       subtitle: filename || '',
       icon: path.join(__dirname, 'logo.png')

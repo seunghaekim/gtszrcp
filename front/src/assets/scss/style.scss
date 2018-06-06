@@ -64,10 +64,15 @@ ul {
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 70vw;
+      width: 25vw;
       margin: 0 auto;
       z-index: 0;
 
+      .VueCarousel-slide {
+        img {
+          width: 100%;
+        }
+      }
       .VueCarousel-pagination {
         display:none;
 
