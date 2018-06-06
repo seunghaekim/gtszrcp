@@ -37,4 +37,5 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
+        ordering = ('-pub_date', )
         fields = '__all__'

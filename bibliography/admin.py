@@ -12,7 +12,7 @@ class BookshopAdmin(admin.ModelAdmin):
 
 class BookAdmin(admin.ModelAdmin):
     # list_display = ('title', 'writer_string', 'publisher', 'pub_date')
-    list_display = ('title', 'writer_str', )
+    list_display = ('title', 'writer_str', 'pub_date', )
     ordering = ('-pub_date', )
 
 admin.site.register(Artist, SimpleAdmin)
