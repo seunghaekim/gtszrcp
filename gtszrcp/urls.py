@@ -20,5 +20,5 @@ router.register(r'post', pages.views.PostViewSet)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^v1/', include(router.urls)),
-    url(r'^.*$', index),
+    url(r'^$', index),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
