@@ -20,7 +20,7 @@
     "moment": "^2.22.2",
     "node-sass": "^4.9.0",
     "numeral": "^2.0.6",
-    "sass-loader": "^7.0.1",
+    "sass-loader": "^7.0.3",
     "vue": "^2.5.2",
     "vue-carousel": "^0.8.1",
     "vue-progressbar": "^0.7.5",
