@@ -78,13 +78,13 @@ export default {
     },
     set_content: function (data, converter) {
       let content = {}
-      let contentKeys = ['summary', 'toc', 'figs', 'distributor', 'images']
+      let contentKeys = ['title', 'summary', 'toc', 'figs', 'distributor', 'images']
       contentKeys.map((curr) => {
         if (data[curr] === null) return
         if ((typeof data[curr] !== 'string' && data[curr].length < 1)) {
           return
         }
-        if (typeof data[curr] === 'string') {
+        if (typeof data[curr] === 'string' && curr !== 'title') {
           content[curr] = converter.makeHtml(data[curr])
           return
         }
@@ -98,11 +98,19 @@ export default {
       })
     }
   },
-  watch: {
-    '$route': 'get_content'
+  metaInfo () {
+    return {
+      title: this.content.title,
+      titleTemplate: '%s-bibliography: gtsz.rcp'
+    }
   },
-  created () {
+  beforeRouteEnter (to, from, next) {
+    next(vm => vm.get_content())
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.content = []
     this.get_content()
+    next()
   }
 }
 

@@ -18,17 +18,28 @@ export default {
     }
   },
   methods: {
-    get_lists: function () {
+    get_lists: function (callback) {
       this.$http.get(`${this.$api_root}/post`)
         .then((result) => {
           if (result.status === 200) {
             this.lists = result.data
+            return callback
           }
         })
     }
   },
-  created () {
+  metaInfo () {
+    return {
+      title: 'List of Posts: gtsz.rcp'
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+    next(vm => vm.get_lists())
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.lists = []
     this.get_lists()
+    next()
   }
 }
 </script>

@@ -42,8 +42,18 @@ export default {
       }).join(', ')
     }
   },
-  created () {
+  metaInfo () {
+    return {
+      title: 'Bibliography: gtsz.rcp'
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+    next(vm => vm.get_lists())
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.lists = []
     this.get_lists()
+    next()
   }
 }
 </script>

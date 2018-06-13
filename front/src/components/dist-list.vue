@@ -49,8 +49,18 @@ export default {
         })
     }
   },
-  created () {
+  metaInfo () {
+    return {
+      title: 'distributors: gtsz.rcp'
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+    next(vm => vm.get_lists())
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.lists = []
     this.get_lists()
+    next()
   }
 }
 </script>

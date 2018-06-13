@@ -23,16 +23,24 @@ export default {
       this.$http.get(`${this.$api_root}/page/${this.$route.params.slug}`)
         .then((result) => {
           if (result.status === 200) {
-            result.data.content = this.$showdown.makeHtml(result.data.content)
-            let m = moment(result.data.pub_date)
-            result.data.pub_date = m.format('ll')
-            this.content = result.data
+            this.set_content(result.data)
           }
         })
+    },
+    set_content: function (data) {
+      data.content = this.$showdown.makeHtml(data.content)
+      let m = moment(data.pub_date)
+      data.pub_date = m.format('ll')
+      this.content = data
     }
   },
-  created () {
+  beforeRouteEnter (to, from, next) {
+    next(vm => vm.get_content())
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.content = []
     this.get_content()
+    next()
   }
 }
 </script>

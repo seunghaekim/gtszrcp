@@ -24,7 +24,9 @@ export default {
   components: { Carousel, Slide },
   data () {
     return {
-      content: []
+      content: {
+        title: 'loading'
+      }
     }
   },
   methods: {
@@ -32,23 +34,33 @@ export default {
       this.$http.get(this.api_url())
         .then((result) => {
           if (result.status === 200) {
-            result.data.content = this.$showdown.makeHtml(result.data.content)
-            let m = moment(result.data.pub_date)
-            result.data.pub_date = m.format('ll')
-            this.content = result.data
+            this.set_content(result.data)
           }
         })
     },
     api_url: function () {
       let cat = this.$route.name === 'PageView' ? 'page' : 'post'
       return [this.$api_root, cat, this.$route.params.slug].join('/')
+    },
+    set_content: function (data) {
+      data.content = this.$showdown.makeHtml(data.content)
+      data.pub_date = moment(data.pub_date).format('ll')
+      this.content = data
     }
   },
-  watch: {
-    '$route': 'get_content'
+  metaInfo () {
+    return {
+      title: this.content.title,
+      titleTemplate: '%s-Posts: gtsz.rcp'
+    }
   },
-  created () {
+  beforeRouteEnter (to, from, next) {
+    next(vm => vm.get_content())
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.content = []
     this.get_content()
+    next()
   }
 }
 </script>
