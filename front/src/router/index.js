@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Meta from 'vue-meta'
 import PostList from '@/components/post-list'
 import PostView from '@/components/post-view'
 import BibList from '@/components/bib-list'
@@ -7,6 +8,8 @@ import BibView from '@/components/bib-view'
 import DistList from '@/components/dist-list'
 
 Vue.use(Router)
+Vue.use(Meta)
+
 const progressOpt = {
   func: [
     {call: 'color', modifier: 'temp', argument: '#ffb000'},

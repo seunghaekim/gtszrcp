@@ -46,7 +46,6 @@ export default {
   },
   methods: {
     show_menu: function () {
-      console.log(this.smMenuVisible)
       this.smMenuVisible = !this.smMenuVisible
     }
   },

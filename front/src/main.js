@@ -31,5 +31,8 @@ export default new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  metaInfo: {
+    title: 'gtsz.rcp HOME'
+  }
 }).$mount('#app')
