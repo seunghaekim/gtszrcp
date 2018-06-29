@@ -4,6 +4,7 @@ import router from './router'
 import instance from './axios-config'
 import showdown from 'showdown'
 import VueProgressBar from 'vue-progressbar'
+import VueAnalytics from 'vue-analytics'
 
 Vue.config.productionTip = false
 
@@ -13,6 +14,9 @@ Vue.prototype.$showdown = new showdown.Converter({
   headerLevelStart: 2
 })
 
+Vue.use(VueAnalytics, {
+  id: 'UA-78070436-5'
+})
 Vue.use(VueProgressBar, {
   color: '#bffaf3',
   failedColor: '#874b4b',
@@ -33,10 +37,6 @@ export default new Vue({
   components: { App },
   template: '<App/>',
   metaInfo: {
-    title: 'gtsz.rcp HOME',
-    script: [
-      { 'async': true, 'src': 'https://www.googletagmanager.com/gtag/js?id=UA-78070436-5' },
-      { 'innerHTML': "window.dataLayer = window.dataLayer || [];function gtag{dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-78070436-5');" }
-    ]
+    title: 'gtsz.rcp HOME'
   }
 }).$mount('#app')

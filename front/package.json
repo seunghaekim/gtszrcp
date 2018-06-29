@@ -22,6 +22,7 @@
     "numeral": "^2.0.6",
     "sass-loader": "^7.0.3",
     "vue": "^2.5.2",
+    "vue-analytics": "^5.12.2",
     "vue-carousel": "^0.8.1",
     "vue-meta": "^1.5.0",
     "vue-progressbar": "^0.7.5",
