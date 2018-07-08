@@ -18,7 +18,7 @@ router.register(r'page', pages.views.PageViewSet)
 router.register(r'post', pages.views.PostViewSet)
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^v1/', include(router.urls)),
     url(r'^(?!admin|v1).*$', index),
-    url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
