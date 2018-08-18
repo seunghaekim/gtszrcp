@@ -15,8 +15,22 @@ Vue.prototype.$showdown = new showdown.Converter({
 })
 
 Vue.use(VueAnalytics, {
-  id: 'UA-78070436-5'
+  id: 'UA-78070436-5',
+  checkDuplicatedScript: true,
+  router,
+  autoTracking: {
+    pageviewOnLoad: false
+  },
+  debug: ((env) => {
+    let isDev = (env === 'development')
+    return {
+      enabled: isDev,
+      trace: isDev,
+      sendHitTask: isDev
+    }
+  })(process.env.NODE_ENV)
 })
+
 Vue.use(VueProgressBar, {
   color: '#bffaf3',
   failedColor: '#874b4b',
