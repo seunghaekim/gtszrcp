@@ -6,6 +6,7 @@ import PostView from '@/components/post-view'
 import BibList from '@/components/bib-list'
 import BibView from '@/components/bib-view'
 import DistList from '@/components/dist-list'
+import LinksView from '@/components/links-view'
 
 Vue.use(Router)
 Vue.use(Meta)
@@ -73,6 +74,14 @@ export default new Router({
       path: '/dist',
       name: 'DistList',
       component: DistList,
+      meta: {
+        progress: progressOpt
+      }
+    },
+    {
+      path: '/links/:slug',
+      name: 'LinksView',
+      component: LinksView,
       meta: {
         progress: progressOpt
       }
