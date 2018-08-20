@@ -41,10 +41,6 @@ export default {
 </script>
 
 <style lang="scss">
-nav {
-    display:none;
-}
-
 .msg {
     position: fixed;
     top: 50%;
