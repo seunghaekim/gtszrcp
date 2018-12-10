@@ -7,7 +7,6 @@ django = "*"
 gunicorn = "*"
 django-heroku = "*"
 django-extensions = "*"
-ipython = {extras = ["notebook"]}
 dj-database-url = "*"
 pillow = "*"
 boto = "*"
