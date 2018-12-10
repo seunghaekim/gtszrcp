@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bibliography',
     'pages',
     'photo',
+    'links',
     'storages',
     'django_extensions',
     'rest_framework',
