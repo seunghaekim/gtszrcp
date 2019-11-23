@@ -45,6 +45,11 @@ class Book(models.Model):
         related_name='artist_as_editor', 
         blank=True
         )
+    translator = models.ManyToManyField(
+        'Artist', 
+        related_name='artist_as_editor', 
+        blank=True
+        )
     designer = models.ManyToManyField(
         'Artist', 
         related_name='artist_as_designer', 

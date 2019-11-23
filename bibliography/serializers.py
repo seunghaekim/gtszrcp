@@ -27,6 +27,7 @@ class BookSerializer(serializers.ModelSerializer):
     lookup_field = 'slug'
     writer = ArtistSerializer(many=True)
     editor = ArtistSerializer(many=True)
+    translator = ArtistSerializer(many=True)
     designer = ArtistSerializer(many=True)
     publisher = PublisherSerializer(many=True)
     distributor = BookshopSerializer(many=True)
