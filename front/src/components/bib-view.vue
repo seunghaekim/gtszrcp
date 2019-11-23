@@ -50,6 +50,7 @@ export default {
       content: [],
       meta: {
         writer: new DataFactory('Writer', artistImplode),
+        translator: new DataFactory('Translator', artistImplode),
         designer: new DataFactory('Designer', artistImplode),
         publisher: new DataFactory('Publisher', artistImplode),
         language: new DataFactory('Written in', passThrough),

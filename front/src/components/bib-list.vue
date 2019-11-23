@@ -6,7 +6,11 @@
     <div class="entry">
       <ul>
         <li v-for="item in lists" :key="item.id" class="citation">
-          <span class="writer" v-if="item.writer.length > 0">{{name_implode(item.writer)}}.</span> <span class="editor" v-if="item.editor.length > 0">{{name_implode(item.editor)}}(Eds.),</span> <router-link :to="{name: 'BibView', params: {slug: item.slug}}">{{item.title}}</router-link>. {{name_implode(item.publisher)}}: {{item.publisher_place}}, {{date_format(item.pub_date)}}
+          <span class="writer" v-if="item.writer.length > 0">{{name_implode(item.writer)}}.</span>
+          <span class="translator" v-if="item.translator.length > 0">{{name_implode(item.translator)}} 번역. </span>
+          <span class="editor" v-if="item.editor.length > 0">{{name_implode(item.editor)}} 편집,</span>
+          <router-link :to="{name: 'BibView', params: {slug: item.slug}}">{{item.title}}</router-link>.
+          {{name_implode(item.publisher)}}: {{item.publisher_place}}, {{date_format(item.pub_date)}}
         </li>
       </ul>
     </div>
