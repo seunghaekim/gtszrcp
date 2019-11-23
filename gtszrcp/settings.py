@@ -63,8 +63,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # os.path.join(BASE_DIR, 'templates'),
-            os.path.join(VUE_PROJECT_DIR, 'index.html') # vuejs build folder
+            os.path.join(BASE_DIR, 'templates'),
+            VUE_PROJECT_DIR # vuejs build folder
         ],
         'APP_DIRS': True,
         'OPTIONS': {
