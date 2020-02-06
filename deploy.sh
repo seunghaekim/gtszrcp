@@ -13,7 +13,7 @@ done
 
 echo '==> BACKUP DATABASE';
 
-bash deploy/dbbackup.sh;
+# bash deploy/dbbackup.sh;
 
 echo '==> GIT PULL';
 
@@ -32,4 +32,4 @@ fi
 
 echo '==> COPY .htaccess FILES to dist';
 
-bash deploy/check_htaccess.sh;
+# bash deploy/check_htaccess.sh;
