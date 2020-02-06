@@ -1,0 +1,1 @@
+ssh -i ~/.ssh/ragyeom.pem ragyeom@54.180.52.215 "cd ~/ragyeom && bash deploy.sh";
