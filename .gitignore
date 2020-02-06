@@ -12,3 +12,4 @@ front/node_modules/
 Vagrantfile
 .vagrant
 .vscode/
+pgbackup.sql
