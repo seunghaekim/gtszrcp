@@ -15,6 +15,7 @@ djangorestframework = "*"
 django = "*"
 psycopg2-binary = "*"
 django-cors-headers = "*"
+uwsgi = "*"
 
 [requires]
 python_version = "3.6"

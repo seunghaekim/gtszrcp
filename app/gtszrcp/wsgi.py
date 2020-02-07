@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gtszrcp.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gtszrcp.settings.deploy")
 
 from django.core.wsgi import get_wsgi_application
 
