@@ -13,3 +13,5 @@ Vagrantfile
 .vagrant
 .vscode/
 pgbackup.sql
+b003
+front/package-lock.json

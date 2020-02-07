@@ -1,6 +1,6 @@
 echo "----> CHECK .htaccess FILE ON STATIC APPS";
 
-APP_ROOT=/home/ragyeom/ragyeom;
+APP_ROOT=/home/gtszrcp/gtszrcp;
 DEFAULT_HTACCESS="${APP_ROOT}/default.htaccess"
 
 if test -f "$DEFAULT_HTACCESS"; then
@@ -20,14 +20,9 @@ function check_htaccess() {
 	fi
 }
 
-ADMIN_ROOT="${APP_ROOT}/admin";
-ADMIN_HTACCESS="${ADMIN_ROOT}/dist/.htaccess";
+FRONT_ROOT="${APP_ROOT}/front";
+FRONT_HTACCESS="${FRONT_ROOT}/dist/.htaccess";
 
-check_htaccess $ADMIN_ROOT $ADMIN_HTACCESS;
-
-TATTOO_ROOT="${APP_ROOT}/tattoo";
-TATTOO_HTACCESS="${TATTOO_ROOT}/dist/.htaccess";
-
-check_htaccess $TATTOO_ROOT $TATTOO_HTACCESS;
+check_htaccess $FRONT_ROOT $FRONT_HTACCESS;
 
 echo "CHECK .htaccess FILE ON STATIC APPS DONE <----";
