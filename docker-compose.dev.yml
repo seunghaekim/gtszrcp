@@ -10,19 +10,6 @@ services:
     restart: always
     image: postgres:12
     ports:
-        - 5432:5432
+        - 5431:5432
     volumes:
         - ./pgdata.dev:/var/lib/postgresql/data:rw
-# app:
-#   environment:
-#     DATABASE_URL: postgres://ragyeom:ragyeom@db/ragyeom
-#     DJANGO_MANAGEPY_MIGRATE: "on"
-#   build:
-#     context: ./app
-#     dockerfile: ./Dockerfile
-#   ports:
-#     - "8000:8000"
-#   volumes:
-#     - ./app/uploads:/code/uploads/:rw
-#   depends_on:
-#     - db
