@@ -52,7 +52,7 @@ RUN chmod 777 -R /code/logs
 # uWSGI will listen on this port
 EXPOSE 8000
 
-ENV UWSGI_WSGI_FILE=app/wsgi.py
+ENV UWSGI_WSGI_FILE=gtsrcp/wsgi.py
 ENV UWSGI_HTTP=:8000 UWSGI_MASTER=1 UWSGI_HTTP_AUTO_CHUNKED=1 UWSGI_HTTP_KEEPALIVE=1 UWSGI_LAZY_APPS=1 UWSGI_WSGI_ENV_BEHAVIOR=holy UWSGI_WORKERS=2 UWSGI_THREADS=4
 ENV UWSGI_STATIC_MAP="/media/=/code/uploads/"
 ENV UWSGI_STATIC_EXPIRES_URI="/media/.*\.[a-f0-9]{12,}\.(css|js|png|jpg|jpeg|gif|ico|woff|ttf|otf|svg|scss|map|txt) 315360000"
