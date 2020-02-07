@@ -35,31 +35,34 @@ class Book(models.Model):
     title = models.CharField(max_length=500)
     subtitle = models.CharField(max_length=500, blank=True)
     writer = models.ManyToManyField(
-        'Artist', 
-        related_name='artist_as_writer', 
-        blank=True, 
-        default=Artist.objects.filter(name='김미루').get().id
+        'Artist',
+        related_name='artist_as_writer',
+        blank=True,
+        # default=Artist.objects.filter(name='김미루').get().id
+        default=None
         )
     editor = models.ManyToManyField(
-        'Artist', 
-        related_name='artist_as_editor', 
+        'Artist',
+        related_name='artist_as_editor',
         blank=True
         )
     translator = models.ManyToManyField(
-        'Artist', 
-        related_name='artist_as_translator', 
+        'Artist',
+        related_name='artist_as_translator',
         blank=True,
         default=None
         )
     designer = models.ManyToManyField(
-        'Artist', 
-        related_name='artist_as_designer', 
-        blank=True, 
-        default=Artist.objects.filter(name='써드엔지니어링카르텔').get().id
+        'Artist',
+        related_name='artist_as_designer',
+        blank=True,
+        # default=Artist.objects.filter(name='써드엔지니어링카르텔').get().id
+        default=None
         )
     publisher = models.ManyToManyField(
-        'Publisher', 
-        default=Publisher.objects.filter(name='금치산자레시피').get().id
+        'Publisher',
+        # default=Publisher.objects.filter(name='금치산자레시피').get().id
+        default=None
         )
     language = models.CharField(max_length=100, default='Korean')
     publisher_place = models.CharField(max_length=100, default='Seoul')
@@ -86,27 +89,27 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     def __many_to_string(self, field):
         return ', '.join([str(p) for p in getattr(self, field).all()])
-    
+
     def writer_str(self):
         return self.__many_to_string('writer')
-    
+
     def editor_str(self):
         return self.__many_to_string('editor')
-    
+
     def designer_str(self):
         return self.__many_to_string('designer')
 
     def publisher_str(self):
         return self.__many_to_string('publisher')
-    
+
     def distributor_related(self):
         dist = []
         for d in self.distributor.all():
             dist.append({'name': d.name, 'website': d.website})
-        
+
         return dist
 
 

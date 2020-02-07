@@ -1,12 +1,12 @@
 from django.conf import settings
 from django.conf.urls import include
+from django.urls import re_path
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.urls import path
 from django.contrib import admin
 from rest_framework import routers
 
-from .views import index
 import bibliography.views
 import pages.views
 import links.views
@@ -21,7 +21,6 @@ router.register(r'post', pages.views.PostViewSet)
 router.register(r'links', links.views.LinksViewSet)
 
 urlpatterns = [
-    url(r'^$', index),
     url(r'^admin/', admin.site.urls),
-    url(r'^v1/', include(router.urls)),
+    re_path(r'^', include(router.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
