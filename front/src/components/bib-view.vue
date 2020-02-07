@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     get_content: function () {
-      this.$http.get(`${this.$api_root}/book/${this.$route.params.slug}`)
+      this.$http.get(`/book/${this.$route.params.slug}/`)
         .then((result) => {
           if (result.status === 200) {
             this.content = this.set_content(result.data, this.$showdown)

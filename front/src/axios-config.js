@@ -1,7 +1,11 @@
 import axios from 'axios'
 import app from './main'
 
-const instance = axios.create()
+const baseURL = process.env.NODE_ENV === 'production' ? 'http://app.gtszrcp.gtszoffice.com' : 'http://localhost:8000'
+
+const instance = axios.create({
+  baseURL
+})
 
 instance.interceptors.request.use(config => {
   app.$Progress.start() // for every request start the progress

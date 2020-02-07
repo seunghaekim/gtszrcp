@@ -8,7 +8,6 @@ import VueProgressBar from 'vue-progressbar'
 Vue.config.productionTip = false
 
 Vue.prototype.$http = instance
-Vue.prototype.$api_root = (process.env.API_ROOT !== undefined ? process.env.API_ROOT : '')
 Vue.prototype.$showdown = new showdown.Converter({
   headerLevelStart: 2
 })

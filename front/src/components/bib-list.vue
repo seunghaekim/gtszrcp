@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     get_lists: function () {
-      this.$http.get(`${this.$api_root}/book`)
+      this.$http.get('/book/')
         .then((result) => {
           if (result.status === 200) {
             this.lists = result.data

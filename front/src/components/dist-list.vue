@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     get_lists: function () {
-      this.$http.get(`${this.$api_root}/dist`)
+      this.$http.get(`/dist/`)
         .then((result) => {
           if (result.status === 200) {
             this.lists = result.data.map(function (curr) {

@@ -29,18 +29,20 @@ export default {
       }
     }
   },
+  computed: {
+    api_url () {
+      let cat = this.$route.name === 'PageView' ? 'page' : 'post'
+      return `/${cat}/${this.$route.params.slug}/`
+    }
+  },
   methods: {
     get_content: function () {
-      this.$http.get(this.api_url())
+      this.$http.get(this.api_url)
         .then((result) => {
           if (result.status === 200) {
             this.set_content(result.data)
           }
         })
-    },
-    api_url: function () {
-      let cat = this.$route.name === 'PageView' ? 'page' : 'post'
-      return [this.$api_root, cat, this.$route.params.slug].join('/')
     },
     set_content: function (data) {
       data.content = this.$showdown.makeHtml(data.content)

@@ -12,17 +12,19 @@ export default {
       data: false
     }
   },
+  computed: {
+    api_url () {
+      return `/links/${this.$route.params.slug}/`
+    }
+  },
   methods: {
     get_content () {
-      this.$http.get(this.api_url())
+      this.$http.get(this.api_url)
         .then((result) => {
           if (result.status === 200) {
             this.set_content(result.data)
           }
         })
-    },
-    api_url () {
-      return [this.$api_root, 'links', this.$route.params.slug].join('/')
     },
     set_content (data) {
       this.data = data

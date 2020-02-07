@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     get_lists: function (callback) {
-      this.$http.get(`${this.$api_root}/post`)
+      this.$http.get(`/post/`)
         .then((result) => {
           if (result.status === 200) {
             this.lists = result.data

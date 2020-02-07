@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     get_content: function () {
-      this.$http.get(`${this.$api_root}/page/${this.$route.params.slug}`)
+      this.$http.get(`/page/${this.$route.params.slug}/`)
         .then((result) => {
           if (result.status === 200) {
             this.set_content(result.data)
