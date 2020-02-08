@@ -1,0 +1,6 @@
+--2020-02-08 03:24:02--  https://xfrtu.s3.amazonaws.com/3b8af03b-cf19-43c3-8900-cc6b0abf7bed/2020-02-07T15%3A10%3A25Z/e7b58aab-1827-4ac8-98f5-e5c33f7b5d46?X-Amz-Algorithm=AWS4-HMAC-SHA256
+Resolving xfrtu.s3.amazonaws.com (xfrtu.s3.amazonaws.com)... 52.217.13.204
+Connecting to xfrtu.s3.amazonaws.com (xfrtu.s3.amazonaws.com)|52.217.13.204|:443... connected.
+HTTP request sent, awaiting response... 400 Bad Request
+2020-02-08 03:24:03 ERROR 400: Bad Request.
+
