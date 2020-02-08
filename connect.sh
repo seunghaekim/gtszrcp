@@ -1,1 +1,1 @@
-ssh -i ~/.ssh/MyKeyPair.pem ubuntu@52.79.231.109
+ssh -i ~/.ssh/gtszrcp.pem gtszrcp@52.79.231.109
