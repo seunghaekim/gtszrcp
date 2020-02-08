@@ -4,10 +4,20 @@ from .base import *
 
 DEBUG = False
 SITE_DOMAIN = 'http://app.gtszrcp.gtszoffice.com'
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'app.gtszrcp.gtszoffice.com',
+    'gtszrcp.gtszoffice.com',
+    'app.gtszrcp.com',
+    'gtszrcp.com',
+]
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)  # noqa: F405
 
-CORS_ORIGIN_WHITELIST = []
+CORS_ORIGIN_WHITELIST = [
+    'http://gtszrcp.gtszoffice.com',
+    'http://app.gtszrcp.gtszoffice.com',
+    'http://gtszrcp.com',
+    'http://app.gtszrcp.com',
+]
 
 LOGGING = {
     'version': 1,
