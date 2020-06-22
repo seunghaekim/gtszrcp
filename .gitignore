@@ -15,3 +15,6 @@ Vagrantfile
 pgbackup.sql
 b003
 front/package-lock.json
+vendor/
+composer.lock
+*.sqlite
